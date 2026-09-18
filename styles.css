@@ -156,3 +156,101 @@ h3 { font-size: 1.25rem; }
   .footer-row { display: block; }
   .footer-row span { display: block; margin-top: 8px; }
 }
+
+/* ========================================
+   GRUPPENS MÅL OG ØNSKER
+======================================== */
+.group-goals {
+    max-width: 1200px;
+    margin: 100px auto;
+    padding: 0 30px;
+}
+/* Overskrift */
+.group-goals-header {
+    max-width: 650px;
+    margin-bottom: 50px;
+}
+.section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+}
+.group-goals-header h2 {
+    font-family: var(--display);
+    font-size: 2.5rem;
+    margin: 0 0 16px;
+    color: var(--ink);
+}
+.group-goals-header > p:last-child {
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+/* De tre kortene */
+.group-goals-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+.goal-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    padding: 35px;
+    min-height: 350px;
+
+    display: flex;
+    flex-direction: column;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+/* Nummer øverst */
+.goal-number {
+    font-family: var(--display);
+    font-size: 0.9rem;
+    color: var(--accent);
+    margin-bottom: 45px;
+}
+/* Overskrift på kort */
+.goal-card h3 {
+    font-family: var(--display);
+    font-size: 1.5rem;
+    color: var(--ink);
+    margin: 0 0 20px;
+}
+/* Tekst */
+.goal-card p {
+    color: var(--muted);
+    line-height: 1.7;
+    margin: 0 0 15px;
+}
+/* Litt bevegelse når musen føres over */
+.goal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+}
+
+/* Mobil / mindre skjerm */
+
+@media (max-width: 850px) {
+    .group-goals {
+        margin: 70px auto;
+        padding: 0 20px;
+    }
+    .group-goals-grid {
+        grid-template-columns: 1fr;
+    }
+    .goal-card {
+        min-height: auto;
+    }
+    .goal-number {
+        margin-bottom: 25px;
+    }
+    .group-goals-header h2 {
+        font-size: 2rem;
+    }
+}
