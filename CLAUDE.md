@@ -18,9 +18,9 @@ There is nothing to build, lint, or test — changes are visible on reload.
 
 ## Architecture
 
-Five sibling pages ([index.html](index.html), [about.html](about.html), [projects.html](projects.html), [bachelor.html](bachelor.html), [contact.html](contact.html)), all linking the single [styles.css](styles.css) and [script.js](script.js). There is no templating or includes: **the `<header>` nav and `<footer>` are copy-pasted inline into every page**. Changing the logo, group name, nav links, or footer means editing all five files. Each page marks its own nav item with `class="active"`.
+Four sibling pages ([index.html](index.html), [about.html](about.html), [projects.html](projects.html), [contact.html](contact.html)), all linking the single [styles.css](styles.css) and [script.js](script.js). There is no templating or includes: **the `<header>` nav and `<footer>` are copy-pasted inline into every page**. Changing the logo, group name, nav links, or footer means editing all four files. Each page marks its own nav item with `class="active"`.
 
-[script.js](script.js) is three lines: it fills every `[data-year]` element with the current year, used in all five footers. It is wired through a data attribute rather than an id or class so behavior stays opt-in per element — keep that pattern if you add anything.
+[script.js](script.js) is three lines: it fills every `[data-year]` element with the current year, used in all four footers. It is wired through a data attribute rather than an id or class so behavior stays opt-in per element — keep that pattern if you add anything.
 
 [styles.css](styles.css) is the whole design system, in one file with no nesting or preprocessor:
 
@@ -40,7 +40,7 @@ The photo fallback is non-obvious: `.team-photo` grid-stacks an `<img>` on top o
 
 ## Markup style
 
-Page bodies are written very densely. [about.html](about.html), [projects.html](projects.html), [bachelor.html](bachelor.html) and [contact.html](contact.html) put whole sections on a single line (up to ~1900 characters). [index.html](index.html) is broken across more lines. Match whichever style the file you are editing already uses — and expect `git diff` to report a one-line change even when a whole section was rewritten. `git diff --word-diff` is far more readable on this codebase.
+Page bodies are written very densely. [about.html](about.html), [projects.html](projects.html) and [contact.html](contact.html) put whole sections on a single line (up to ~1900 characters). [index.html](index.html) is broken across more lines. Match whichever style the file you are editing already uses — and expect `git diff` to report a one-line change even when a whole section was rewritten. `git diff --word-diff` is far more readable on this codebase.
 
 ## Known rough edges
 
