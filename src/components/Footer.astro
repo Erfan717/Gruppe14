@@ -1,0 +1,136 @@
+---
+import { site, nav, mailtoHref } from '../data/site.js';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <a class="logo" href="/">
+        <span class="logo__mark">{site.mark}</span>
+        <span>{site.name}</span>
+      </a>
+      <p class="footer__tagline">{site.tagline}</p>
+    </div>
+
+    <nav class="footer__nav" aria-label="Bunnmeny">
+      <ul>
+        {nav.map((item) => (
+          <li><a class="link-underline" href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="footer__contact">
+      <p class="footer__label">Ta kontakt</p>
+      <a class="link-underline" href={mailtoHref}>{site.email}</a>
+    </div>
+  </div>
+
+  <div class="container footer__legal">
+    <span>© {year} {site.name}</span>
+    <span>Universitetet i Agder</span>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding-block: var(--space-2xl) var(--space-lg);
+    background: var(--bg-deep);
+    border-top: 1px solid var(--line);
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+  }
+
+  .footer__inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+    padding-bottom: var(--space-xl);
+  }
+
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    color: var(--text);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .logo__mark {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--text);
+    font-family: var(--font-code);
+    font-size: var(--text-2xs);
+    font-weight: 700;
+  }
+
+  .footer__tagline {
+    margin-top: var(--space-sm);
+    max-width: 30ch;
+    color: var(--text-faint);
+  }
+
+  .footer__label {
+    margin-bottom: var(--space-2xs);
+    color: var(--text-faint);
+    font-family: var(--font-code);
+    font-size: var(--text-2xs);
+    letter-spacing: var(--tracking-mono);
+    text-transform: uppercase;
+  }
+
+  .footer__nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .footer__nav a,
+  .footer__contact a {
+    color: var(--text-soft);
+    transition: color var(--speed) var(--ease);
+  }
+
+  .footer__nav a:hover,
+  .footer__contact a:hover {
+    color: var(--text);
+  }
+
+  .footer__legal {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--line);
+    color: var(--text-faint);
+    font-family: var(--font-code);
+    font-size: var(--text-2xs);
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 760px) {
+    .footer__inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+
+    .footer__legal {
+      flex-direction: column;
+      gap: var(--space-3xs);
+    }
+  }
+</style>

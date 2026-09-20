@@ -1,0 +1,70 @@
+---
+import { Font } from 'astro:assets';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site.js';
+import '../styles/global.css';
+
+/**
+ * Rammen rundt alle sider: head, header og footer.
+ *
+ * Header og footer finnes bare her. I forrige versjon var de limt inn i alle
+ * fire HTML-filene, så en ny menylenke måtte legges inn fire steder.
+ */
+interface Props {
+  title: string;
+  description: string;
+  /**
+   * true = headeren starter gjennomsiktig oppå et bilde (forsiden).
+   * false = lys header, og innholdet skyves ned så det ikke havner under den.
+   */
+  overlayHeader?: boolean;
+}
+
+const { title, description, overlayHeader = false } = Astro.props;
+
+const fullTitle = title === site.name ? title : `${title} | ${site.name}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#fafafb" />
+
+    {/* Skriftene serveres fra vårt eget domene — ingen kall til Google. */}
+    <Font cssVariable="--font-sans" preload />
+    <Font cssVariable="--font-mono" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="nb_NO" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#innhold">Hopp til innhold</a>
+
+    <Header overlay={overlayHeader} />
+
+    <main id="innhold" class:list={[{ 'is-offset': !overlayHeader }]}>
+      <slot />
+    </main>
+
+    <Footer />
+
+    <style>
+      /* Headeren ligger fixed, så sider uten bilde bak må få plass til den. */
+      main.is-offset {
+        padding-top: var(--header-height);
+      }
+    </style>
+  </body>
+</html>

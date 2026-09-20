@@ -1,10 +1,14 @@
+# Avhengigheter
+node_modules/
+
+# Byggeresultat
+dist/
+.astro/
+
 # Miljøvariabler — inneholder hemmeligheter, skal aldri committes
 .env
 .env.local
 .env*.local
-
-# Vercel
-.vercel
 
 # OS
 .DS_Store

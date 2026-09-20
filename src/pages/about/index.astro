@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TeamCard from '../../components/TeamCard.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import TechStack from '../../components/TechStack.astro';
+import { team } from '../../data/team.js';
+
+---
+
+<BaseLayout
+  title="Om oss"
+  description="Fem studenter ved Universitetet i Agder med ulike faglige interesser, samlet om ett bachelorprosjekt."
+>
+  <PageHeader
+    label="Om gruppen"
+    title="Sammen skaper vi løsninger."
+    lead="Med ulike faglige interesser og erfaringer utfyller vi hverandre gjennom hele prosessen — fra idé og planlegging til utvikling og ferdig løsning."
+  />
+
+  <section class="section section--tight">
+    <div class="container container--narrow">
+      <p class="prose">
+        Vi er en motivert og arbeidsvillig gruppe med høye ambisjoner for bachelorprosjektet.
+        Målet er å levere et prosjekt av høy faglig kvalitet, og vi er innstilt på å legge ned
+        tiden og innsatsen som kreves. Samtidig ønsker vi å utfordre oss selv, utvikle
+        kompetansen vår og få erfaring med å gjennomføre et større prosjekt sammen.
+      </p>
+      <p class="prose">
+        Vi ser etter et prosjekt der vi kan kombinere kunnskapen fra studiet med en reell
+        problemstilling. Vi er åpne for ulike typer prosjekter og bedrifter, men ønsker gjerne
+        å utvikle en digital løsning med en tydelig hensikt som skaper verdi for brukerne eller
+        bedriften.
+      </p>
+      <p class="prose">
+        Som gruppe har vi ulike styrker og interesser, noe vi ser på som en fordel. Vi ønsker å
+        utnytte disse forskjellene, samtidig som alle får mulighet til å utfordre seg selv og
+        lære noe nytt. Vi legger vekt på godt samarbeid, tydelig kommunikasjon, struktur og
+        jevn arbeidsinnsats gjennom hele prosjektperioden.
+      </p>
+    </div>
+  </section>
+
+  <TechStack />
+
+  <section class="section team">
+    <div class="container">
+      <div class="team__head">
+        <p class="label">Teamet</p>
+        <h2>Møt medlemmene.</h2>
+      </div>
+
+      <div class="team__grid">
+        {team.map((member) => <TeamCard {...member} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* --- Teamet --- */
+  .team {
+    background: var(--bg-raised);
+  }
+
+  .team__head {
+    margin-bottom: var(--space-xl);
+  }
+
+  .team__head :global(.label) {
+    margin-bottom: var(--space-md);
+  }
+
+  /* Auto-fit: kortene fordeler seg av seg selv, uansett hvor mange
+     medlemmer som ligger i team.js. Ingen hardkodede rader. */
+  .team__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-md);
+  }
+
+  /* Med nøyaktig fem kort ville auto-fit gitt 3 + 2 med et hull til høyre.
+     :has() lar oss sentrere de to siste — men bare i akkurat det tilfellet,
+     så regelen ikke saboterer en gruppe på fire eller seks. */
+  @media (min-width: 1000px) {
+    .team__grid:has(> :last-child:nth-child(5)) {
+      grid-template-columns: repeat(6, 1fr);
+    }
+    .team__grid:has(> :last-child:nth-child(5)) > :global(*) {
+      grid-column: span 2;
+    }
+    .team__grid:has(> :last-child:nth-child(5)) > :global(:nth-child(4)) {
+      grid-column: 2 / span 2;
+    }
+    .team__grid:has(> :last-child:nth-child(5)) > :global(:nth-child(5)) {
+      grid-column: 4 / span 2;
+    }
+  }
+
+</style>

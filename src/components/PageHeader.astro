@@ -1,0 +1,61 @@
+---
+/**
+ * Toppen av en underside. Samme oppbygning på alle sider som ikke er forsiden,
+ * så de får lik rytme uten at markupen gjentas.
+ */
+interface Props {
+  label?: string;
+  title: string;
+  lead?: string;
+}
+
+const { label, title, lead } = Astro.props;
+---
+
+<section class="page-header">
+  <div class="container">
+    {label && <p class="label">{label}</p>}
+    <h1>{title}</h1>
+    {lead && <p class="page-header__lead">{lead}</p>}
+  </div>
+</section>
+
+<style>
+  .page-header {
+    position: relative;
+    padding-block: clamp(3.5rem, 2rem + 7vw, 6.5rem) var(--space-2xl);
+    background: var(--bg-raised);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+  }
+
+  /* Loddrette harstreker, samme sprak som forsiden. */
+  .page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(to right, var(--grid-line) 1px, transparent 1px);
+    background-size: var(--grid-step) 100%;
+    pointer-events: none;
+  }
+
+  .page-header :global(.container) {
+    position: relative;
+  }
+
+  .page-header :global(.label) {
+    margin-bottom: var(--space-md);
+  }
+
+  h1 {
+    max-width: 18ch;
+  }
+
+  .page-header__lead {
+    max-width: 56ch;
+    margin-top: var(--space-md);
+    color: var(--text-muted);
+    font-size: var(--text-lg);
+    line-height: var(--leading-snug);
+  }
+</style>
