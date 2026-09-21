@@ -1,0 +1,148 @@
+---
+import { Image } from 'astro:assets';
+import MediaPlaceholder from './MediaPlaceholder.astro';
+
+/**
+ * Ett prosjektkort. Alle genereres fra src/data/projects.js.
+ */
+interface Props {
+  title: string;
+  tag: string;
+  image?: string | null;
+  description: string;
+  partners?: string[];
+}
+
+const { title, tag, image, description, partners = [] } = Astro.props;
+
+// Bildene hentes inn på forhånd, så vi kan slå opp på filnavn. Mangler fila,
+// faller kortet tilbake til plassholderen uten at bygget knekker.
+const files = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/projects/*.{jpg,jpeg,png,webp,avif}',
+  { eager: true }
+);
+
+const entry = image
+  ? Object.entries(files).find(([path]) => path.endsWith(`/${image}`))
+  : undefined;
+const picture = entry?.[1].default;
+---
+
+<article class="project">
+  <div class="project__shot">
+    {
+      picture ? (
+        <Image
+          src={picture}
+          alt={`Skjermbilde fra ${title}`}
+          widths={[600, 900, 1400]}
+          sizes="(max-width: 860px) 92vw, 560px"
+          class="project__image"
+        />
+      ) : (
+        <MediaPlaceholder label="Bilde kommer" tone="light" />
+      )
+    }
+  </div>
+
+  <div class="project__body">
+    <p class="project__tag">{tag}</p>
+    <h3 class="project__title">{title}</h3>
+    <p class="project__text">{description}</p>
+
+    {
+      partners.length > 0 && (
+        <ul class="project__partners">
+          {partners.map((p) => (
+            <li>{p}</li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</article>
+
+<style>
+  .project {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    transition:
+      border-color var(--speed) var(--ease),
+      box-shadow var(--speed) var(--ease),
+      transform var(--speed) var(--ease);
+  }
+
+  .project:hover {
+    transform: translateY(-3px);
+    border-color: var(--line-strong);
+    box-shadow: 0 22px 50px -32px rgba(0, 0, 0, 0.7);
+  }
+
+  .project__shot {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--bg-raised);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .project__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  .project__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: var(--space-2xs);
+    padding: var(--space-md);
+  }
+
+  .project__tag {
+    color: var(--text-faint);
+    font-family: var(--font-code);
+    font-size: var(--text-2xs);
+    letter-spacing: var(--tracking-mono);
+    text-transform: uppercase;
+  }
+
+  .project__title {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    letter-spacing: var(--tracking-tight);
+  }
+
+  .project__text {
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+  }
+
+  /* Samarbeidspartnerne er det tyngste argumentet i kortet — de får
+     stå for seg selv nederst, ikke gjemt inne i brødteksten. */
+  .project__partners {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3xs);
+    margin: auto 0 0;
+    padding-top: var(--space-sm);
+    list-style: none;
+  }
+
+  .project__partners li {
+    padding: 0.3em 0.6em;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    color: var(--text-soft);
+    font-family: var(--font-code);
+    font-size: var(--text-2xs);
+    letter-spacing: 0.02em;
+  }
+</style>

@@ -1,38 +1,38 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHeader from '../../components/PageHeader.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { projects } from '../../data/projects.js';
 import { mailtoHref } from '../../data/site.js';
-
-/**
- * Prosjektsiden står bevisst tom.
- *
- * Den forrige versjonen viste to oppdiktede prosjekter («Prosjekt Aurora»,
- * «Prosjekt Kompass») med lånte bilder fra Unsplash. Det ser mer ut som en
- * mal enn som en portefølje, og en bedrift som leser den vil merke det.
- * Heller si ærlig at bacheloroppgaven ikke er valgt ennå — og bruke sida
- * til å invitere inn et prosjekt.
- */
 ---
 
 <BaseLayout
   title="Prosjekter"
-  description="Bachelorprosjektet er ikke valgt ennå. Vi ser etter en reell problemstilling å bryne oss på."
+  description="SafeMap og AOR — prosjekter utviklet i samarbeid med Kartverket, Norkart og Norsk Luftambulanse."
 >
   <PageHeader
     label="Det vi lager"
-    title="Prosjektet er ikke valgt ennå."
-    lead="Vi er i gang med å finne bacheloroppgaven vår, og har plass til én ordentlig problemstilling."
+    title="Prosjekter i praksis."
+    lead="Arbeider utviklet sammen med eksterne partnere, der løsningen skulle brukes av noen utenfor klasserommet."
   />
 
   <section class="section">
-    <div class="container looking">
+    <div class="container">
+      <div class="projects">
+        {projects.map((project) => <ProjectCard {...project} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bachelor">
+    <div class="container bachelor__inner">
       <div>
-        <h2>Hva vi ser etter</h2>
+        <p class="label">Bacheloroppgaven</p>
+        <h2>Den er ikke valgt ennå.</h2>
         <p class="prose">
-          En reell problemstilling fra en bedrift eller organisasjon, der vi kan kombinere
-          kunnskapen fra studiet med noe som faktisk skal brukes av noen. Vi er åpne for ulike
-          typer prosjekter, men ønsker gjerne å utvikle en digital løsning med en tydelig
-          hensikt.
+          Vi er i gang med å finne bacheloroppgaven vår, og har plass til én ordentlig
+          problemstilling. Vi ser etter en reell oppgave fra en bedrift eller organisasjon, der
+          vi kan kombinere kunnskapen fra studiet med noe som faktisk skal brukes av noen.
         </p>
       </div>
 
@@ -74,14 +74,29 @@ import { mailtoHref } from '../../data/site.js';
 </BaseLayout>
 
 <style>
-  .looking {
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .bachelor {
+    background: var(--bg-raised);
+    border-block: 1px solid var(--line);
+  }
+
+  .bachelor__inner {
     display: grid;
     grid-template-columns: 1fr 1.1fr;
     gap: var(--space-xl);
     align-items: start;
   }
 
-  .looking .prose {
+  .bachelor :global(.label) {
+    margin-bottom: var(--space-md);
+  }
+
+  .bachelor .prose {
     margin-top: var(--space-md);
   }
 
@@ -123,11 +138,6 @@ import { mailtoHref } from '../../data/site.js';
     font-size: var(--text-sm);
   }
 
-  .invite {
-    background: var(--bg-raised);
-    border-top: 1px solid var(--line);
-  }
-
   .invite__inner {
     text-align: center;
   }
@@ -138,7 +148,7 @@ import { mailtoHref } from '../../data/site.js';
   }
 
   @media (max-width: 760px) {
-    .looking {
+    .bachelor__inner {
       grid-template-columns: 1fr;
       gap: var(--space-lg);
     }

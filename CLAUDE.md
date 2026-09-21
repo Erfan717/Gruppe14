@@ -80,14 +80,25 @@ The point is that the build succeeds and the page looks finished while the files
 
 ## Content status
 
-- **Bios are real** for Marius, Erfan, Zent and Matias, written in first person. Elise's is real too but she has no photo (`photo: null`) and no GitHub username — both marked `TODO` in `team.js`. Do not invent a username; an absent link renders as nothing, which is the intended behavior.
-- **`/projects/` has no projects, on purpose.** The old page showed two invented projects ("Prosjekt Aurora", "Prosjekt Kompass") with Unsplash stock photos. It now says plainly that the bachelor assignment is not chosen yet and invites one. Do not repopulate it with sample projects.
+- **All five bios are real**, written in first person by the members themselves and reproduced **verbatim** in [src/data/team.js](src/data/team.js). Do not shorten, merge or reword them — that was done once and had to be reverted. Marius's second paragraph contains two typos as written ("fra ide til", and a missing space in "spennende.Jeg"); they are preserved deliberately, so fix them only if the group asks. All five have photos. Elise still has no GitHub username (`TODO` in `team.js`); do not invent one, an absent link simply does not render.
+- **`/projects/` shows two real projects**, SafeMap (GIS, with Kartverket and Norkart) and AOR (Aviation Obstacle Registration, with Norsk Luftambulanse and Kartverket), driven by [src/data/projects.js](src/data/projects.js). The descriptions are the group's own words — verbatim, do not rewrite. Two *invented* projects ("Prosjekt Aurora", "Prosjekt Kompass") with Unsplash stock photos also existed in the old markup; those were dropped and must not come back. Below the real ones, a separate section says the bachelor assignment itself is still unchosen and invites one.
 - **`/contact/` has no form, on purpose.** A working form needs a server to hold an email API key, and this project has no backend. The `mailto:` link *is* the working answer. Don't reintroduce a form without first solving where the key lives.
 - All stock imagery was dropped in the rewrite. The site no longer hotlinks Unsplash, so it renders correctly offline.
 - `/about/` carries a **tech stack section** driven by `stack` in [src/data/site.js](src/data/site.js). Keep that list honest — it is there for employers, so only add things the group can answer questions about.
 
 ## Git
 
-Work happens on `dev`, merges to `main`. Note the remote carries both `origin/Dev` and `origin/dev` — a casing split from earlier merges — and [push-dev.command](push-dev.command) (a double-clickable script for non-CLI teammates) pushes to `origin Dev` specifically. Check which you track before pushing.
+Work happens on `dev`, merges to `main`; the Astro rewrite lives on `new`. [push-dev.command](push-dev.command) (a double-clickable script for non-CLI teammates) pushes to `origin dev`.
+
+**The repo used to carry two branches, `Dev` and `dev`, with different content.** GitHub treats them as distinct; a case-insensitive macOS filesystem cannot hold both, so `git fetch` reported `unable to update local ref` and left the local remote-tracking refs pointing at each other's commits — silently, without failing. This was not cosmetic. The Astro rewrite was first built from what looked like the tip of `dev` and missed two commits that lived only on the other one: the SafeMap and AOR projects, and Elise's photo and rewritten bio.
+
+Resolved on 2026-09-21 by fast-forwarding `dev` to the newer commit (`ba075cc`, a strict descendant, so nothing was lost), after which `Dev` pointed at the same commit and was deleted as redundant. **`dev` in lower case is the only development branch — do not recreate `Dev`.**
+
+If a branch ever again differs only by case, do not trust local refs. Ask the remote directly and read commits without checking them out:
+
+```sh
+git ls-remote --heads origin          # the truth, unaffected by the local filesystem
+git show <sha>:<path>                 # read a file from a branch you cannot check out
+```
 
 Several people edit the same files. The previous version had **committed merge-conflict markers** sitting in `about.html` for weeks, which produced a duplicate team card on the live page. Moving per-person content into `team.js` makes that far less likely, but after any merge it is still worth running `grep -rn '^<<<<<<<' src/` before committing.

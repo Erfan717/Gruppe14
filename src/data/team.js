@@ -50,12 +50,10 @@ export const team = [
   },
   {
     name: 'Elise Fjeldstad',
-    // TODO: legg bildet i src/assets/team/elise.jpg og sett photo: 'elise.jpg'
-    photo: null,
+    photo: 'elise.jpg',
     bio: [
-      'Jeg har gjennom studiet fått erfaring med blant annet C#, PHP, databaser, webutvikling og Docker. Jeg liker spesielt godt å jobbe med UX, design og frontend, og synes det er spennende å utvikle løsninger som er brukervennlige, tilgjengelige og visuelt gjennomtenkte. Jeg er også opptatt av universell utforming og hvordan gode designvalg kan bidra til at digitale løsninger fungerer for flest mulig.',
+      'Jeg liker spesielt godt å jobbe med UX/UI design, prosjektstyring og frontend. Jeg synes det er spennende å utvikle løsninger som er brukervennlige, tilgjengelige og visuelt gjennomtenkte. Jeg er også opptatt av universell utforming og hvordan gode designvalg kan bidra til at digitale løsninger fungerer for flest mulig. Gjennom bachelorprosjektet ønsker jeg å få erfaring med hele prosessen fra idé og planlegging til utvikling av en ferdig løsning.',
       'Ved siden av studiene jobber jeg som nattsykepleier. Gjennom jobben har jeg fått mye erfaring med samarbeid, kommunikasjon, struktur og det å finne gode løsninger i ulike situasjoner.',
-      'Gjennom bachelorprosjektet ønsker jeg å få erfaring med hele prosessen fra idé og planlegging til utvikling av en ferdig løsning. Jeg er også interessert i prosjektstyring og ønsker å lære mer om hvordan et større prosjekt kan planlegges, koordineres og gjennomføres på en god måte.',
     ],
     links: {
       // TODO: mangler GitHub-brukernavn
