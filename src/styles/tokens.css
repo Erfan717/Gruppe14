@@ -1,0 +1,117 @@
+/*
+ * Designtokens — ett sted for farger, typografi og rytme.
+ *
+ * Regelen: ingen komponent skriver en rå farge eller px-verdi som hører hjemme
+ * her. Skal noe justeres på tvers av siden, justeres det i denne fila.
+ *
+ * Uttrykket er mørk grafitt, ikke sort. Hierarkiet bæres av gråtoner — flatene
+ * ligger tett i valør og skilles med tynne linjer, slik tekniske grensesnitt
+ * gjør det. Ingen farget tekst: det som skal framheves, framheves med lysstyrke.
+ */
+
+:root {
+  /* --- Flater ---------------------------------------------------------
+     Fem trinn fra dypest til lysest. Ligger tett med vilje — forskjellen
+     skal leses som dybde, ikke som striper. */
+  --bg-deep: #101215; /* footer, dypeste felt */
+  --bg: #16181c; /* sidens grunnflate */
+  --bg-raised: #1b1e23; /* seksjoner som skal løfte seg fra grunnflaten */
+  --surface: #202429; /* kort */
+  --surface-hover: #262a30;
+
+  /* --- Tekst ----------------------------------------------------------
+     Fire trinn. Nesten-hvit til overskrifter, aldri ren hvit — ren hvit
+     mot mørk flate gir for hard kontrast og flimrer i lesing.
+     Alle fire ligger over WCAG AA (4.5:1) mot samtlige flater over, også
+     det svakeste trinnet mot den lyseste kortflaten. Lysner du en flate,
+     kontroller trinnene på nytt. */
+  --text: #f1f3f5;
+  --text-soft: #d6dadf;
+  --text-muted: #b9bec6;
+  --text-faint: #a0a6b0;
+  /* Løftet ett hakk i september 2026 — teksten var for mørk. Svakeste
+     trinn mot --surface er nå 6.37:1 (var 4.68:1). */
+
+  /* --- Linjer --------------------------------------------------------- */
+  --line: #292d34;
+  --line-strong: #383d45;
+
+  /* --- Framheving -----------------------------------------------------
+     Ingen signalfarge. Det som skal trekke blikket, blir lysere — og den
+     ene kjølige gråblå tonen brukes bare på interaktive tilstander. */
+  --hi: #f2f4f6; /* sterkeste framheving: knapper, aktiv meny */
+  --hi-bright: #ffffff; /* kun hover paa en allerede lys flate */
+  --steel: #9aabbd; /* kjølig grå, kun til hover og fokus */
+  --steel-dim: rgba(154, 171, 189, 0.16);
+
+  /* Tekst oppå foto */
+  --text-on-photo: #f4f5f7;
+  --text-on-photo-muted: rgba(244, 245, 247, 0.9); /* 0.72 var for grått over gruppebildet */
+
+  /* --- Typografi ------------------------------------------------------
+     --font-sans og --font-mono settes av next/font (se src/app/layout.tsx).
+     Her pakkes de inn med reservestakker, i tilfelle en font ikke lastes. */
+  --font-body: var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, sans-serif;
+  --font-code: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Consolas,
+    monospace;
+
+  --text-2xs: 0.6875rem;
+  --text-xs: 0.78125rem;
+  --text-sm: 0.875rem;
+  --text-base: 0.9375rem;
+  --text-md: 1rem;
+  --text-lg: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  --text-xl: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+
+  --display-sm: clamp(1.5rem, 1.35rem + 0.7vw, 1.875rem);
+  --display-md: clamp(1.875rem, 1.5rem + 1.8vw, 2.75rem);
+  --display-lg: clamp(2.25rem, 1.6rem + 3.2vw, 4rem);
+  --display-xl: clamp(2.75rem, 1.6rem + 5.2vw, 5.5rem);
+
+  --leading-tight: 1.05;
+  --leading-snug: 1.3;
+  --leading-normal: 1.6;
+  --leading-loose: 1.75;
+
+  /* Store overskrifter i sans trenger negativ sperring for å se satt ut. */
+  --tracking-display: -0.035em;
+  --tracking-tight: -0.015em;
+  --tracking-mono: 0.08em;
+
+  /* --- Rytme ---------------------------------------------------------- */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.25rem;
+  --space-xl: 3.5rem;
+  --space-2xl: 5rem;
+  --space-3xl: clamp(4rem, 2.5rem + 5vw, 7rem);
+
+  /* --- Mål ------------------------------------------------------------ */
+  --container: 1200px;
+  --container-narrow: 720px;
+  --measure: 66ch;
+  --gutter: clamp(1.25rem, 0.8rem + 2vw, 2.5rem);
+  --header-height: 68px;
+
+  /* --- Rutenett ------------------------------------------------------- */
+  --grid-line: rgba(255, 255, 255, 0.035);
+  --grid-step: 84px;
+
+  /* --- Form og bevegelse ---------------------------------------------- */
+  --radius: 4px;
+  --radius-lg: 8px;
+  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+  --speed: 0.2s;
+  --speed-slow: 0.45s;
+}
+
+@media (max-width: 760px) {
+  :root {
+    --header-height: 58px;
+    --grid-step: 60px;
+  }
+}

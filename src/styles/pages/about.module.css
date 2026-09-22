@@ -1,0 +1,105 @@
+/* --- Innledningen ---
+   Teksten dekker 80 % av skjermbredden. Brukes også på sidetoppen, så
+   overskriften og boksene under starter og slutter på samme sted. .container står foran for å slå
+   den globale max-width og padding på .container, uavhengig av rekkefølgen
+   stilarkene lastes i. På mobil gjelder vanlig container med luft på sidene. */
+:global(.container).intro {
+  width: 80%;
+  max-width: none;
+  padding-inline: 0;
+}
+
+/* --- De tre målene --- */
+.goals {
+  /* Tre bokser side om side. Faste tre kolonner, så de ikke glir over i
+     to eller én når det blir trangt — det skjer først på mobil, under. */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Samme kortflate som personkortene lenger ned. */
+.goal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-lg) var(--space-md);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--speed) var(--ease);
+}
+
+.goal:hover {
+  border-color: var(--line-strong);
+}
+
+.goal__num {
+  color: var(--text-faint);
+  font-family: var(--font-code);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-mono);
+}
+
+.goal__title {
+  font-size: var(--text-lg);
+}
+
+.goal__text {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+}
+
+@media (max-width: 760px) {
+  .goals {
+    grid-template-columns: 1fr;
+  }
+
+  :global(.container).intro {
+    width: 100%;
+    padding-inline: var(--gutter);
+  }
+}
+
+/* --- Teamet --- */
+.team {
+  background: var(--bg-raised);
+}
+
+.team__head {
+  margin-bottom: var(--space-xl);
+}
+
+.team__head :global(.label) {
+  margin-bottom: var(--space-md);
+}
+
+/* Auto-fit: kortene fordeler seg av seg selv, uansett hvor mange
+   medlemmer som ligger i team.js. Ingen hardkodede rader. */
+.team__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+/* Med nøyaktig fem kort ville auto-fit gitt 3 + 2 med et hull til høyre.
+   :has() lar oss sentrere de to siste — men bare i akkurat det tilfellet,
+   så regelen ikke saboterer en gruppe på fire eller seks. */
+@media (min-width: 1000px) {
+  .team__grid:has(> :last-child:nth-child(5)) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .team__grid:has(> :last-child:nth-child(5)) > :global(*) {
+    grid-column: span 2;
+  }
+  .team__grid:has(> :last-child:nth-child(5)) > :global(:nth-child(4)) {
+    grid-column: 2 / span 2;
+  }
+  .team__grid:has(> :last-child:nth-child(5)) > :global(:nth-child(5)) {
+    grid-column: 4 / span 2;
+  }
+}
