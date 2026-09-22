@@ -1,0 +1,36 @@
+{
+  "name": "gruppe14-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Portefoljeside for Gruppe 14, bachelorprosjekt ved Universitetet i Agder",
+  "packageManager": "pnpm@10.14.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node scripts/images.mjs && NEXT_TELEMETRY_DISABLED=1 next dev --turbo",
+    "build": "node scripts/images.mjs && NEXT_TELEMETRY_DISABLED=1 next build",
+    "start": "next start",
+    "preview": "next start",
+    "images": "node scripts/images.mjs",
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "^15.5.25",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "sharp": "^0.34.4"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^5.9.3"
+  }
+}

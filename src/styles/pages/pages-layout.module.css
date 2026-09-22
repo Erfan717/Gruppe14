@@ -1,0 +1,4 @@
+/* Headeren ligger fixed, så sider uten bilde bak må få plass til den. */
+main.is-offset {
+  padding-top: var(--header-height);
+}

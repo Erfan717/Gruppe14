@@ -1,0 +1,25 @@
+.next {
+  background: var(--bg-raised);
+  border-top: 1px solid var(--line);
+}
+
+.next__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.next__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: var(--space-lg);
+}
+
+@media (max-width: 760px) {
+  .next__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}
