@@ -1,0 +1,52 @@
+/* Seksjonen skal romme én skjerm og ikke mer — etter et forsidebilde i
+   fullskjerm blir det tungt å scrolle hvis neste seksjon også er lang.
+   min-height (ikke height) lar den vokse hvis teksten trenger det. */
+.video-section {
+  min-height: 100svh;
+  display: grid;
+  align-content: center;
+  /* Luften skalerer med vindushøyden, ikke bredden. En kort, bred skjerm
+     (f.eks. 1280×720) har lite høyde å avse — da skal paddingen gi etter. */
+  padding-block: clamp(2rem, 6svh, 4.5rem);
+  background: var(--bg);
+}
+
+.video-section__head {
+  max-width: var(--container-narrow);
+  margin-inline: auto;
+  margin-bottom: clamp(1.5rem, 1rem + 2vw, 2.75rem);
+  text-align: center;
+}
+
+.video-section__head :global(.label) {
+  margin-bottom: var(--space-sm);
+}
+
+.video-section__lead {
+  margin-inline: auto;
+  margin-top: var(--space-sm);
+}
+
+/* Spilleren: midtstilt, med luft rundt.
+   Bredden tar den minste av tre grenser — og 90svh er høydegrensen uttrykt
+   som bredde: ved 16:9 svarer 90svh bredde til ~51svh høyde. Slik kan
+   aspect-ratio stå urørt samtidig som spilleren aldri blir høyere enn
+   drøyt halve skjermen. */
+.player {
+  position: relative;
+  width: min(960px, 100%, 90svh);
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--bg-raised);
+  box-shadow: 0 30px 70px -40px rgba(16, 16, 20, 0.5);
+}
+
+.player video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: var(--bg-deep);
+}

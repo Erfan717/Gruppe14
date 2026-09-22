@@ -47,7 +47,7 @@
   --text-on-photo-muted: rgba(244, 245, 247, 0.72);
 
   /* --- Typografi ------------------------------------------------------
-     --font-sans og --font-mono settes av Astro (se astro.config.mjs).
+     --font-sans og --font-mono settes av next/font (se src/app/layout.tsx).
      Her pakkes de inn med reservestakker, i tilfelle en font ikke lastes. */
   --font-body: var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, sans-serif;

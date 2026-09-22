@@ -1,0 +1,122 @@
+/* Toppen ligger dypere enn resten av siden — e-postadressen skal
+   vaere det eneste som trekker blikket. */
+.hero {
+  position: relative;
+  padding-block: clamp(4rem, 2rem + 8vw, 7.5rem);
+  background: var(--bg-deep);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(to right, var(--grid-line) 1px, transparent 1px);
+  background-size: var(--grid-step) 100%;
+  pointer-events: none;
+}
+
+.hero__inner {
+  position: relative;
+  max-width: var(--container-narrow);
+}
+
+.hero :global(.label) {
+  margin-bottom: var(--space-md);
+}
+
+.hero__note {
+  max-width: 54ch;
+  margin-top: var(--space-xl);
+  color: var(--text-muted);
+  line-height: var(--leading-loose);
+}
+
+/* Selve e-postlenka: stor, i monospace — det ER en adresse, saa la den
+   se ut som noe man kan kopiere. */
+.mail {
+  display: inline-grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: var(--space-2xs) var(--space-sm);
+  margin-top: var(--space-xl);
+  padding: var(--space-md) var(--space-lg) var(--space-md) var(--space-md);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: var(--text);
+  transition:
+    border-color var(--speed) var(--ease),
+    background var(--speed) var(--ease);
+}
+
+.mail:hover {
+  background: var(--surface-hover);
+  border-color: var(--text-faint);
+}
+
+/* Ikonet arver fargen fra lenka med vilje. Astro-versjonen hadde regler som
+   skulle gjøre det grått og skyve det ved hover, men de traff aldri: Astro
+   scopet dem til kontaktsiden, mens <svg>-en rendres av Icon. De er tatt ut
+   ved flyttingen til Next så siden ser ut som før. */
+
+.mail__address {
+  font-family: var(--font-code);
+  font-size: clamp(1.05rem, 0.85rem + 1vw, 1.6rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  word-break: break-all;
+}
+
+.mail__hint {
+  grid-column: 2;
+  color: var(--text-faint);
+  font-family: var(--font-code);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+}
+
+/* --- Grunner til aa ta kontakt --- */
+.reasons {
+  background: var(--bg);
+}
+
+.reasons__title {
+  margin-bottom: var(--space-lg);
+}
+
+.reasons__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.reasons__list li {
+  padding: var(--space-lg) var(--space-md);
+  background: var(--bg);
+  transition: background var(--speed) var(--ease);
+}
+
+.reasons__list li:hover {
+  background: var(--surface);
+}
+
+.reasons__list h3 {
+  margin-bottom: var(--space-2xs);
+  font-size: var(--text-lg);
+}
+
+.reasons__list p {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+}

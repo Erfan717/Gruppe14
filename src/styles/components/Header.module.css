@@ -1,0 +1,162 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  height: var(--header-height);
+  transition:
+    background-color var(--speed-slow) var(--ease),
+    color var(--speed-slow) var(--ease),
+    border-color var(--speed-slow) var(--ease);
+}
+
+.header__inner {
+  max-width: var(--container);
+  height: 100%;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+/* --- Gjennomsiktig oppa foto --- */
+.header.is-overlay {
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  color: var(--text-on-photo);
+}
+
+/* Svak nedtoning i toppen, sa menyteksten holder seg lesbar uansett
+   hvor lyst gruppebildet er akkurat der. */
+.header.is-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: calc(var(--header-height) * 2.4);
+  background: linear-gradient(to bottom, rgba(10, 10, 14, 0.55), transparent);
+  pointer-events: none;
+}
+
+.header.is-overlay .logo__mark {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: var(--text-on-photo);
+}
+
+/* --- Lys flate --- */
+.header.is-solid {
+  /* Skrevet slik Astro-versjonen faktisk leverte regelen: byggeverktøyet
+     der fjernet backdrop-filter og beholdt bare -webkit-varianten. Derfor
+     blurrer headeren i Safari, men ikke i Chrome og Firefox. Det er holdt
+     likt med vilje ved flyttingen til Next — skal blur virke overalt, legg
+     til backdrop-filter: saturate(1.4) blur(16px); under. */
+  background-color: #16181cc7;
+  -webkit-backdrop-filter: saturate(1.4) blur(16px);
+  border-bottom: 1px solid var(--line);
+  color: var(--text);
+}
+
+.header.is-solid .logo__mark {
+  background: var(--surface);
+  border-color: var(--line-strong);
+  color: var(--text);
+}
+
+/* --- Logo --- */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+/* Merket settes i monospace — den minste tekniske detaljen som likevel
+   setter tonen for resten av siden. */
+.logo__mark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  font-family: var(--font-code);
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition:
+    background var(--speed-slow) var(--ease),
+    border-color var(--speed-slow) var(--ease),
+    color var(--speed-slow) var(--ease);
+}
+
+/* --- Meny --- */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(var(--space-sm), 2vw, var(--space-lg));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__link {
+  position: relative;
+  display: inline-block;
+  padding-block: var(--space-3xs);
+  font-size: var(--text-sm);
+  font-weight: 450;
+  letter-spacing: -0.005em;
+  opacity: 0.72;
+  transition:
+    opacity var(--speed) var(--ease),
+    color var(--speed) var(--ease);
+}
+
+.nav__link:hover,
+.nav__link.is-active {
+  opacity: 1;
+}
+
+/* Tynn strek under den aktive sida, tegnet inn ved hover pa de andre. */
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1.5px;
+  border-radius: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--speed) var(--ease);
+}
+
+.nav__link:hover::after,
+.nav__link.is-active::after {
+  transform: scaleX(1);
+}
+
+/* Aktiv side framheves med lysstyrke, ikke med farge. */
+.header.is-solid .nav__link.is-active,
+.header.is-overlay .nav__link.is-active {
+  color: var(--hi);
+}
+
+@media (max-width: 760px) {
+  .logo__word {
+    display: none;
+  }
+
+  .nav {
+    gap: var(--space-sm);
+  }
+
+  .nav__link {
+    font-size: var(--text-xs);
+  }
+}

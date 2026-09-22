@@ -1,0 +1,38 @@
+/* --- Teamet --- */
+.team {
+  background: var(--bg-raised);
+}
+
+.team__head {
+  margin-bottom: var(--space-xl);
+}
+
+.team__head :global(.label) {
+  margin-bottom: var(--space-md);
+}
+
+/* Auto-fit: kortene fordeler seg av seg selv, uansett hvor mange
+   medlemmer som ligger i team.js. Ingen hardkodede rader. */
+.team__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+}
+
+/* Med nøyaktig fem kort ville auto-fit gitt 3 + 2 med et hull til høyre.
+   :has() lar oss sentrere de to siste — men bare i akkurat det tilfellet,
+   så regelen ikke saboterer en gruppe på fire eller seks. */
+@media (min-width: 1000px) {
+  .team__grid:has(> :last-child:nth-child(5)) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .team__grid:has(> :last-child:nth-child(5)) > :global(*) {
+    grid-column: span 2;
+  }
+  .team__grid:has(> :last-child:nth-child(5)) > :global(:nth-child(4)) {
+    grid-column: 2 / span 2;
+  }
+  .team__grid:has(> :last-child:nth-child(5)) > :global(:nth-child(5)) {
+    grid-column: 4 / span 2;
+  }
+}

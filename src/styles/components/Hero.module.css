@@ -1,0 +1,135 @@
+.hero {
+  position: relative;
+  /* Fyller skjermen som brukes, uansett format. Bildet beskjæres med
+     object-fit: cover, så det tilpasser seg i stedet for å tvinge fram
+     en bredde — et låst 16:9 her ga sidescroll på høye, smale skjermer. */
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-block: var(--space-3xl) clamp(5rem, 11vh, 7.5rem);
+  overflow: hidden;
+  color: var(--text-on-photo);
+  background: var(--bg-deep);
+  isolation: isolate;
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  /* Litt avmettet, så fotoet legger seg inn i gråtonene på resten av siden
+     i stedet for å slå ut i en annen retning. */
+  filter: saturate(0.72) contrast(1.04);
+}
+
+/* Mørkner bunnen av bildet så overskriften har noe å stå imot,
+   uansett hvordan gruppebildet ser ut. */
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to top,
+      rgba(16, 18, 21, 0.94) 0%,
+      rgba(16, 18, 21, 0.72) 30%,
+      rgba(16, 18, 21, 0.3) 62%,
+      rgba(16, 18, 21, 0.45) 100%
+    );
+}
+
+/* Loddrette hårstreker over fotoet — den tekniske detaljen som binder
+   forsiden til resten av siden. */
+.hero__grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px
+  );
+  background-size: var(--grid-step) 100%;
+  mask-image: linear-gradient(to top, #000 0%, transparent 55%);
+  -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 55%);
+}
+
+.hero__content {
+  position: relative;
+}
+
+.hero__label {
+  margin-bottom: var(--space-md);
+  color: var(--text-on-photo-muted);
+  font-family: var(--font-code);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+}
+
+.hero__title {
+  max-width: 16ch;
+  color: var(--text-on-photo);
+  font-size: var(--display-xl);
+  font-weight: 600;
+  letter-spacing: var(--tracking-display);
+}
+
+.hero__lead {
+  max-width: 54ch;
+  margin-top: var(--space-md);
+  color: var(--text-on-photo-muted);
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+}
+
+/* --- Peker nederst --- */
+.hero__cue {
+  position: absolute;
+  left: 50%;
+  bottom: var(--space-md);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3xs);
+  color: var(--text-on-photo-muted);
+  font-family: var(--font-code);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  transition: color var(--speed) var(--ease);
+}
+
+.hero__cue:hover {
+  color: var(--text-on-photo);
+}
+
+/* Pila står stille med vilje. I Astro-versjonen fantes en «nudge»-animasjon
+   her, men den traff aldri: Astro scopet selektoren til Hero, mens <svg>-en
+   rendres av Icon. Den er tatt ut ved flyttingen til Next så siden ser ut
+   som før. Skal pila bevege seg, legg til:
+     .hero__cue svg { animation: nudge 2.4s var(--ease) infinite; }
+     @keyframes nudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } } */
+
+@media (max-width: 760px) {
+  .hero {
+    padding-bottom: clamp(4rem, 12vh, 6rem);
+  }
+
+  .hero__title {
+    max-width: 12ch;
+  }
+
+  .hero__cue span {
+    display: none;
+  }
+}

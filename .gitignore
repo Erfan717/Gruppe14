@@ -2,8 +2,11 @@
 node_modules/
 
 # Byggeresultat
-dist/
-.astro/
+.next/
+public/_images/
+out/
+next-env.d.ts
+*.tsbuildinfo
 
 # Miljøvariabler — inneholder hemmeligheter, skal aldri committes
 .env
