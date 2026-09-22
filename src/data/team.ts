@@ -28,8 +28,10 @@ export const team: Member[] = [
     photo: 'marius.jpg',
     tags: ["Prosjektstyring", "Full-stack"],
     bio: [
-      'Jeg er utdannet sykepleier med erfaring fra sykehus, ambulanse og kommunehelsetjenesten, der jeg har sett på nært hold hvordan teknologi fungerer i en travel arbeidshverdag. Nå fullfører jeg bachelorgraden i IT og informasjonssystemer ved UiA, og jobber ved siden av i familiebedriften Kulien ANS.',
-      'Helseteknologi er et stort interessefelt, men også det å være med helt fra ide til ferdig løsning er veldig spennende.Jeg har også selv flere små prosjekter ved siden av studiene.',
+      'Jeg er 27 år og kommer fra Kristiansand.',
+      'Jeg har en bachelorgrad i sykepleie fra UiA Grimstad. Som sykepleier har jeg erfaring fra sykehus, ambulanse og kommunehelsetjenesten, der jeg har sett på nært hold hvordan teknologi fungerer i en travel arbeidshverdag. Ved siden av studiene jobber jeg ved siden av i familiebedriften Kulien ANS.',
+      'Jeg interesserer meg for hvordan teknologi kan brukes i hverdagen for å gjøre den enklere for mennesker og bedrifter. Helseteknologi er spesielt ett fagfelt jeg interesserer meg for. ',
+      'Ved siden av studiene har jeg også flere egne prosjekter.',
     ],
     links: {
       github: 'https://github.com/MGumpen',
@@ -40,7 +42,7 @@ export const team: Member[] = [
   {
     name: 'Erfan Sarwari',
     photo: 'erfan.jpg',
-    tags: [], // TODO: fyll inn
+    tags: ['Backend', 'Datasikkerhet'],
     bio: [
       'Jeg er 21 år og kommer fra Kristiansand. Jeg er en nysgjerrig student som liker å sette meg inn i nye ting, lære og få praktisk erfaring. Jeg studerer IT og informasjonssystemer fordi jeg er interessert i teknologi og digitale løsninger. På egen hånd liker jeg å utforske nye verktøy, utvikle små prosjekter og finne ut hvordan en idé kan bli til en fungerende løsning. Det jeg synes er mest gøy, er å gå fra et problem til et ferdig resultat og se hvordan tiden og arbeidet jeg legger ned blir til noe konkret.',
     ],

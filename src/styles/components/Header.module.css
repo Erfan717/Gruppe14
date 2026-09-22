@@ -10,6 +10,9 @@
 }
 
 .header__inner {
+  /* Må være posisjonert, ellers tegnes nedtoningen i .is-overlay::before
+     oppå logoen og gjør den grå. */
+  position: relative;
   max-width: var(--container);
   height: 100%;
   margin-inline: auto;
@@ -38,10 +41,15 @@
   pointer-events: none;
 }
 
+/* Helt hvit oppå bildet. */
+.header.is-overlay .logo {
+  color: var(--hi-bright);
+}
+
 .header.is-overlay .logo__mark {
   background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.22);
-  color: var(--text-on-photo);
+  border-color: rgba(255, 255, 255, 0.34);
+  color: var(--hi-bright);
 }
 
 /* --- Lys flate --- */
@@ -57,10 +65,15 @@
   color: var(--text);
 }
 
+/* Samme lysstyrke som det aktive menypunktet. */
+.header.is-solid .logo {
+  color: var(--hi);
+}
+
 .header.is-solid .logo__mark {
   background: var(--surface);
   border-color: var(--line-strong);
-  color: var(--text);
+  color: var(--hi);
 }
 
 /* --- Logo --- */

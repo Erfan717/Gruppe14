@@ -25,7 +25,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  /* Beskjæres mest nederst, ikke likt i begge ender. Gruppebildet er nesten
+     kvadratisk, så på en bred skjerm må mye av høyden bort — med center
+     havnet hodene utenfor toppen, med 20 % sto gruppa for langt nede.
+     28 % legger hodene rett under menyen. Byttes bildet, må tallet justeres. */
+  object-position: center 28%;
   /* Litt avmettet, så fotoet legger seg inn i gråtonene på resten av siden
      i stedet for å slå ut i en annen retning. */
   filter: saturate(0.72) contrast(1.04);
@@ -63,6 +67,9 @@
 
 .hero__content {
   position: relative;
+  /* Myk skygge rundt bokstavene, så kantene holder seg skarpe også der
+     bildet bak er urolig. */
+  text-shadow: 0 1px 18px rgba(10, 11, 14, 0.55);
 }
 
 .hero__label {

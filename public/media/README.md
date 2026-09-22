@@ -1,7 +1,11 @@
 # Bilder og video
 
-Legg de store filene her. Astro plukker dem opp automatisk ved neste bygg —
-du trenger ikke endre noe i koden.
+Legg de store filene her. Siden plukker dem opp automatisk ved neste
+`pnpm build` — du trenger ikke endre noe i koden. Kjører `pnpm dev` allerede,
+kjør `pnpm images` og last siden på nytt.
+
+Filnavnet uten endelse er det som teller: `gruppebilde.jpg`, `.png`, `.webp`
+og `.avif` fungerer like godt.
 
 | Fil                        | Hvor den vises                          |
 | -------------------------- | --------------------------------------- |
@@ -16,8 +20,8 @@ Det er meningen — siden skal se hel ut mens dere venter på innholdet.
 
 - **Gruppebildet** bør være liggende og minst 2400 px bredt. Det beskjæres til
   skjermformat, så la det være litt luft rundt personene.
-  `.jpg`, `.png`, `.webp` og `.avif` fungerer; Astro komprimerer selv.
+  Komprimerte varianter lages automatisk i `public/_images/`.
 - **Videoen** bør være `.mp4` (H.264). Hold den under ~50 MB — alt som ligger
   her havner i Git, og store filer gjør repoet tregt for alle.
 
-Profilbildene til gruppa ligger et annet sted: `src/assets/team/`.
+Profilbildene til gruppa ligger et annet sted: `public/team/`.

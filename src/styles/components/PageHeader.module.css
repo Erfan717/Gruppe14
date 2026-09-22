@@ -24,10 +24,6 @@
   margin-bottom: var(--space-md);
 }
 
-.page-header h1 {
-  max-width: 18ch;
-}
-
 .page-header__lead {
   max-width: 56ch;
   margin-top: var(--space-md);

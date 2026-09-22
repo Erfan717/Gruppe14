@@ -25,10 +25,12 @@
      Alle fire ligger over WCAG AA (4.5:1) mot samtlige flater over, også
      det svakeste trinnet mot den lyseste kortflaten. Lysner du en flate,
      kontroller trinnene på nytt. */
-  --text: #e9ebee;
-  --text-soft: #c2c7ce;
-  --text-muted: #a0a6b0;
-  --text-faint: #878d98;
+  --text: #f1f3f5;
+  --text-soft: #d6dadf;
+  --text-muted: #b9bec6;
+  --text-faint: #a0a6b0;
+  /* Løftet ett hakk i september 2026 — teksten var for mørk. Svakeste
+     trinn mot --surface er nå 6.37:1 (var 4.68:1). */
 
   /* --- Linjer --------------------------------------------------------- */
   --line: #292d34;
@@ -44,7 +46,7 @@
 
   /* Tekst oppå foto */
   --text-on-photo: #f4f5f7;
-  --text-on-photo-muted: rgba(244, 245, 247, 0.72);
+  --text-on-photo-muted: rgba(244, 245, 247, 0.9); /* 0.72 var for grått over gruppebildet */
 
   /* --- Typografi ------------------------------------------------------
      --font-sans og --font-mono settes av next/font (se src/app/layout.tsx).
