@@ -28,14 +28,19 @@
 }
 
 /* Spilleren: midtstilt, med luft rundt.
-   Bredden tar den minste av tre grenser — og 90svh er høydegrensen uttrykt
-   som bredde: ved 16:9 svarer 90svh bredde til ~51svh høyde. Slik kan
+   Bredden tar den minste av tre grenser — og 117svh er høydegrensen uttrykt
+   som bredde: ved 16:9 svarer 117svh bredde til ~66svh høyde. Slik kan
    aspect-ratio stå urørt samtidig som spilleren aldri blir høyere enn
-   drøyt halve skjermen. */
+   to tredjedeler av skjermen.
+
+   Spilleren får gå bredere enn .container: grensen er vinduet minus
+   gutter, ikke containeren. Negativ margin-inline sentrerer den likevel
+   når den er bredere enn forelderen. */
 .player {
+  --player-width: min(1248px, calc(100vw - 2 * var(--gutter)), 117svh);
   position: relative;
-  width: min(960px, 100%, 90svh);
-  margin: 0 auto;
+  width: var(--player-width);
+  margin-inline: calc((100% - var(--player-width)) / 2);
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border: 1px solid var(--line);
