@@ -43,7 +43,7 @@ export default function Hero() {
       </div>
 
       <a className={s['hero__cue']} href="#presentasjon" aria-label="Se presentasjonen">
-        <span>Se presentasjonen</span>
+        <span>Se presentasjonsvideoen under</span>
         <Icon name="arrowDown" size={15} />
       </a>
     </section>

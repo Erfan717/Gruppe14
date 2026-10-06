@@ -44,7 +44,8 @@ export const team: Member[] = [
     photo: 'erfan.jpg',
     tags: ['Backend', 'Datasikkerhet'],
     bio: [
-      'Jeg er 21 år og kommer fra Kristiansand. Jeg er en nysgjerrig student som liker å sette meg inn i nye ting, lære og få praktisk erfaring. Jeg studerer IT og informasjonssystemer fordi jeg er interessert i teknologi og digitale løsninger. På egen hånd liker jeg å utforske nye verktøy, utvikle små prosjekter og finne ut hvordan en idé kan bli til en fungerende løsning. Det jeg synes er mest gøy, er å gå fra et problem til et ferdig resultat og se hvordan tiden og arbeidet jeg legger ned blir til noe konkret.',
+      'Jeg er 21 år og kommer fra Kristiansand. Jeg er en nysgjerrig student som liker å sette meg inn i nye ting, lære og få praktisk erfaring. Jeg studerer IT og informasjonssystemer fordi jeg er interessert i teknologi og digitale løsninger.',
+      'På egen hånd liker jeg å utforske nye verktøy, utvikle små prosjekter og finne ut hvordan en idé kan bli til en fungerende løsning. Det jeg synes er mest gøy, er å gå fra et problem til et ferdig resultat og se hvordan tiden og arbeidet jeg legger ned blir til noe konkret.',
     ],
     links: {
       github: 'https://github.com/Erfan717',

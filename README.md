@@ -42,7 +42,7 @@ src/
 ## Det du oftest skal endre
 
 **Legge inn gruppebildet eller videoen.** Legg fila i `src/assets/media/`
-med riktig navn — `gruppebilde.jpg` og `gruppepresentasjon.mp4`. Det er alt;
+med riktig navn — `gruppebilde.jpg` og `gruppe14.mp4`. Det er alt;
 plassholderen «Bilde kommer» forsvinner av seg selv.
 Se [src/assets/media/README.md](src/assets/media/README.md).
 

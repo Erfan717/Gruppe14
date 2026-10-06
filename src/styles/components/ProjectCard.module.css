@@ -82,3 +82,36 @@
   font-size: var(--text-2xs);
   letter-spacing: 0.02em;
 }
+
+/* Vises bare på prosjekter ett medlem har laget, ikke gruppa. */
+.project__author {
+  color: var(--text-faint);
+  font-family: var(--font-code);
+  font-size: var(--text-xs);
+}
+
+/* Lenke til løsningen når den er live. Legger seg nederst i kortet, slik
+   samarbeidspartnerne gjør — står begge, kommer lenka rett under dem. */
+.project__link {
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: var(--space-sm);
+  color: var(--text-soft);
+  font-family: var(--font-code);
+  font-size: var(--text-xs);
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 0.25em;
+  transition:
+    color var(--speed) var(--ease),
+    text-decoration-color var(--speed) var(--ease);
+}
+
+.project__partners + .project__link {
+  margin-top: 0;
+}
+
+.project__link:hover {
+  color: var(--hi);
+  text-decoration-color: var(--steel);
+}

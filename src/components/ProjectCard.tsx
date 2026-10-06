@@ -10,7 +10,15 @@ import s from '@/styles/components/ProjectCard.module.css';
  * Mangler bildet i public/projects/, faller kortet tilbake til plassholderen
  * uten at bygget knekker.
  */
-export default function ProjectCard({ title, tag, image, description, partners = [] }: Project) {
+export default function ProjectCard({
+  title,
+  tag,
+  image,
+  description,
+  url,
+  partners = [],
+  author,
+}: Project) {
   const picture = findImage('projects', image);
 
   return (
@@ -31,7 +39,16 @@ export default function ProjectCard({ title, tag, image, description, partners =
       <div className={s['project__body']}>
         <p className={s['project__tag']}>{tag}</p>
         <h3 className={s['project__title']}>{title}</h3>
+        {author && <p className={s['project__author']}>Laget av {author}</p>}
         <p className={s['project__text']}>{description}</p>
+
+        {url && (
+          <a className={s['project__link']} href={url} target="_blank" rel="noopener noreferrer">
+            {new URL(url).hostname.replace(/^www\./, '')}
+            <span aria-hidden="true"> ↗</span>
+            <span className="visually-hidden"> (åpnes i ny fane)</span>
+          </a>
+        )}
 
         {partners.length > 0 && (
           <ul className={s['project__partners']}>
@@ -40,6 +57,8 @@ export default function ProjectCard({ title, tag, image, description, partners =
             ))}
           </ul>
         )}
+
+        
       </div>
     </article>
   );

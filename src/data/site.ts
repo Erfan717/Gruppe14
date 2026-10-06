@@ -27,9 +27,13 @@ export const mailtoHref = `mailto:${site.email}?subject=${encodeURIComponent(sit
  */
 export const stack = [
   { name: 'C#', note: 'backend' },
+  { name: 'ASP.NET', note: 'backend' },
+  { name: 'Entity Framework Core', note: 'databaser' },
   { name: 'PHP', note: 'backend' },
   { name: 'JavaScript', note: 'frontend' },
   { name: 'HTML & CSS', note: 'frontend' },
+  { name: 'React / Next.js', note: 'frontend' },
+  { name: 'Leaflet', note: 'kart' },
   { name: 'SQL', note: 'databaser' },
   { name: 'Docker', note: 'drift' },
   { name: 'Git', note: 'samarbeid' },
