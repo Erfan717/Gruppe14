@@ -15,7 +15,7 @@ export default function Prosjekter() {
   return (
     <>
       <PageHeader
-        label="Det vi lager"
+        // label="Det vi lager"
         title="Prosjekter i praksis."
         lead="Her er noen av prosjektene som vi har jobbet med i løpet av studiet. Gjennom disse prosjektene har vi fått verdifull erfaring med samarbeid, problemløsning og utvikling av digitale løsninger."
       />

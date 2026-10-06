@@ -37,6 +37,7 @@ export const projects: Project[] = [
     description:
       'Aviation Obstacle Registration – et system utviklet i samarbeid med Norsk Luftambulanse og Kartverket, der flybesetning kan rapportere luftfartshindre via et kartbasert grensesnitt, med godkjenning og saksbehandling for registrarer og administratorer.',
     partners: ['Norsk Luftambulanse', 'Kartverket'],
+    url: 'https://github.com/mgumpen/aor',
   },
   {
     title: 'Samdel',
