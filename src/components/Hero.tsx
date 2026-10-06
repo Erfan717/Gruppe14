@@ -42,10 +42,10 @@ export default function Hero() {
         </p>
       </div>
 
-      <a className={s['hero__cue']} href="#presentasjon" aria-label="Se presentasjonen">
+      {/* <a className={s['hero__cue']} href="#presentasjon" aria-label="Se presentasjonen">
         <span>Se presentasjonen</span>
         <Icon name="arrowDown" size={15} />
-      </a>
+      </a> */}
     </section>
   );
 }

@@ -16,9 +16,9 @@ export default function VideoSection() {
         <div className={s['video-section__head']}>
           <p className="label">Møt gruppen</p>
           <h2>Dette er oss.</h2>
-          <p className={`prose ${s['video-section__lead']}`}>
+          {/* <p className={`prose ${s['video-section__lead']}`}>
             Trykk play for å høre oss fortelle om bakgrunnen, samarbeidet og ambisjonene våre.
-          </p>
+          </p> */}
         </div>
 
         <figure className={s.player}>

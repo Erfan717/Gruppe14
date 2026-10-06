@@ -42,8 +42,11 @@ export function findImage(dir: 'team' | 'projects', filename?: string | null): s
 /** Gruppebildet bak forsiden. Legg det i public/media/gruppebilde.jpg */
 export const heroImage = findByBasename('media', 'gruppebilde', IMAGE_EXT);
 
-/** Presentasjonsvideoen. Legg den i public/media/gruppepresentasjon.mp4 */
-export const groupVideo = findByBasename('media', 'gruppepresentasjon', VIDEO_EXT);
+/** Presentasjonsvideoen. Legg den i public/media/gruppe14.mp4 */
+export const groupVideo = findByBasename('media', 'gruppe14', VIDEO_EXT);
 
-/** Valgfritt plakatbilde som vises før videoen spilles av. */
-export const videoPoster = findByBasename('media', 'video-poster', IMAGE_EXT);
+/**
+ * Valgfritt plakatbilde som vises før videoen spilles av: gruppebildet fra
+ * slutten av gruppe14.mp4. (video-poster.jpg hører til den gamle videoen.)
+ */
+export const videoPoster = findByBasename('media', 'gruppe14-poster', IMAGE_EXT);

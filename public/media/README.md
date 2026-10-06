@@ -10,8 +10,8 @@ og `.avif` fungerer like godt.
 | Fil                        | Hvor den vises                          |
 | -------------------------- | --------------------------------------- |
 | `gruppebilde.jpg`          | Bakgrunn på forsiden, i fullskjerm      |
-| `gruppepresentasjon.mp4`   | Videospilleren under forsiden           |
-| `video-poster.jpg`         | Stillbildet som vises før video spilles |
+| `gruppe14.mp4`             | Videospilleren under forsiden           |
+| `gruppe14-poster.jpg`      | Stillbildet som vises før video spilles |
 
 Mangler en fil, viser siden «Bilde kommer» eller «Video kommer» i stedet.
 Det er meningen — siden skal se hel ut mens dere venter på innholdet.
