@@ -84,12 +84,13 @@ export const team: Member[] = [
     photo: 'matias.jpg',
     tags: ['Datasikkerhet', 'Full-stack'],
     bio: [
-      'Jeg studerer IT og informasjonssystemer ved UiA og er interessert i det meste innen utvikling, både frontend, backend, databaser og informasjonssikkerhet. Jeg liker å forstå hvordan de ulike delene av et system henger sammen, fra det brukeren ser til dataene som ligger bak, i stedet for å holde meg til én rolle.',
+      'Jeg heter Matias, jeg er 23 år gammel fra Bergen og jeg studerer IT og informasjonssystemer ved UiA og er interessert i det meste innen utvikling, både frontend, backend, databaser og informasjonssikkerhet. Jeg liker å forstå hvordan de ulike delene av et system henger sammen, fra det brukeren ser til dataene som ligger bak, i stedet for å holde meg til én rolle.',
       'Ved siden av studiene er jeg også interessert i business, og bruker gjerne tid på egne prosjekter hvor jeg får teste ut idéer i praksis. På fritiden prioriterer jeg trening, å henge med sønnen min og snowboardturer når det er sesong.',
     ],
     links: {
       github: 'https://github.com/Felovax',
       linkedin: 'https://www.linkedin.com/in/matias-lekva-15a6823b8/',
+      website: 'https://felovax.github.io/matiaslekva-portfolio/',
     },
   },
 ];
