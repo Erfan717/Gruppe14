@@ -74,4 +74,4 @@ Du trenger ikke røre HTML-en; kortene på *Om oss* lages fra denne lista.
 `pnpm build` lager mappa `dist/`. Den kan legges rett ut på Netlify, Vercel,
 GitHub Pages eller en hvilken som helst webserver — det er bare filer.
 Husk å sette riktig adresse i `site:` i [astro.config.mjs](astro.config.mjs)
-før første publisering.
+før første publisering. 
