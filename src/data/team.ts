@@ -89,7 +89,7 @@ export const team: Member[] = [
     ],
     links: {
       github: 'https://github.com/Felovax',
-      linkedin: 'https://www.linkedin.com/in/matiaslekvaS',
+      linkedin: 'https://www.linkedin.com/in/matiaslekva',
       website: 'https://felovax.github.io/matiaslekva-portfolio/',
     },
   },
