@@ -48,4 +48,13 @@ export const projects: Project[] = [
     url: 'https://www.samdel.no',
     partners: ['UiA', 'Marius G. Gundersen'],
   },
+  {
+    title: 'Cmpera',
+    tag: 'business',
+    image: 'Cmpera.png',
+    description:
+      'Cmpera er et bookingsystem og administrerende platform for campingplass eiere utviklet i samarbeid med en pilotcampingplass. Cmpera er for at eiere skal selv eie bookingene sine og kunne automatisere prossesser for å gjøre det enklere for dem.',
+    partners: ['Matias Lekva', 'Vegard Innset'],
+    url: 'https://www.cmpera.no/',
+  },
 ];
