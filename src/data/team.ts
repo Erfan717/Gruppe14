@@ -49,7 +49,7 @@ export const team: Member[] = [
     ],
     links: {
       github: 'https://github.com/Erfan717',
-      linkedin: 'https://www.linkedin.com/in/erfan-sarwari-4b652b3a0/',
+      linkedin: 'https://www.linkedin.com/in/erfansarwari',
       website: 'https://erfan717.github.io/Portofolio/',
     },
   },
@@ -76,7 +76,7 @@ export const team: Member[] = [
     ],
     links: {
       github: 'https://github.com/fjelise',
-      linkedin: 'https://www.linkedin.com/in/elise-fjeldstad-939430328/',
+      linkedin: 'https://www.linkedin.com/in/elisefjeldstad',
     },
   },
   {
@@ -89,7 +89,7 @@ export const team: Member[] = [
     ],
     links: {
       github: 'https://github.com/Felovax',
-      linkedin: 'https://www.linkedin.com/in/matias-lekva-15a6823b8/',
+      linkedin: 'https://www.linkedin.com/in/matiaslekvaS',
       website: 'https://felovax.github.io/matiaslekva-portfolio/',
     },
   },
